@@ -5,3 +5,4 @@ pandas
 tqdm
 pywt
 scipy
+scikit-learn
