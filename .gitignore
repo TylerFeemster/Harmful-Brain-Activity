@@ -12,9 +12,3 @@ train_eegs/**
 train_spectrograms/**
 generalized*.json
 *.zip
-
-EDA/**
-model/**
-
-train.csv
-test.csv
