@@ -2,7 +2,9 @@ python-3.11.3
 jupyter
 numpy
 pandas
+matplotlib
 tqdm
 pywt
 scipy
 scikit-learn
+torch

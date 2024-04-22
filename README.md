@@ -2,7 +2,7 @@
 
 The link to this Kaggle competition is [here](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification/overview). 
 
-
+I finished 387/2767, within the top 14%.
 
 ## ResNet Notes
 
