@@ -5,10 +5,10 @@ __pycache__/**
 cleaned_train_eegs*/**
 denoised_train*/**
 hjorth_*/**
-example_figures/**
 test_eegs/**
 test_spectrograms/**
 train_eegs/**
 train_spectrograms/**
 generalized*.json
-*.zip
+
+EDA/__pycache__/**
