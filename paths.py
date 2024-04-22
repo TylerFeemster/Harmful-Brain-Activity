@@ -1,5 +1,5 @@
 class paths:
-    TRAIN_CSV = "./train.csv"
+    TRAIN_CSV = "./csv data/train.csv"
     TRAIN_SPECTOGRAMS = "./train_spectrograms/"
     TRAIN_EEGS = "./train_eegs/"
     TRAIN_CLEAN_20 = "./cleaned_train_eegs_20/"
