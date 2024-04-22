@@ -8,3 +8,4 @@ pywt
 scipy
 scikit-learn
 torch
+ssqueezepy
