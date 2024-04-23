@@ -1,6 +1,6 @@
 ## HMS - Harmful Brain Activity Classification
 
-The link to this Kaggle competition is [here](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification/overview).  
+The link to this Kaggle competition is [here](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification/overview). 
 
 I finished 387/2767, within the top 14%.
 
@@ -44,8 +44,30 @@ $$||v||_p = \left( \sum_{i=1}^n |v_i|^p \right)^{1/p}$$
 for a vector $v = (v_1, \ldots, v_n)$. As $p \to \infty$, $||v||_p \to \max_i \{|v_i|\},$
 and for $p = 1$, $||v||_1$ is just the sum, which is proportional to the average. By making $p$ learnable and initializing it with a value of, say, 2, we allow each channel to pool in a flexible, learnable way, while only adding 1 new parameter per channel.
 
-This performed better than the ResNet GRU with average pooling. On the private leaderboard, it single-handedly allowed me to break a KL-Divergence score of 0.38.
+This performed better than the ResNet GRU with average pooling. On the private leaderboard, it single-handedly allowed me to break a final KL-Divergence score of 0.38.
 
+## Files
+
+**DEFINITIONS.md**:
+These are my notes from reading [Hirsch et al.](https://doi.org/10.1097/WNP.0000000000000806) I write out the explicit criteria for classifying EEG data.
+
+**EDA**:
+This folder contains numerous notebooks where I experiment with different ways of representing the data, understand class differences, try basic methods, etc.
+
+**cleaning.ipynb**:
+This notebook is where I used parallel processing to clean/preprocess the EEGs for local storage.
+
+**paths.py**:
+A simple class to store global variables.
+
+**hjorth.py**:
+A simple class to generate Hjorth parameters, which I did not ultimately use. Motivating discussion with personal comments available [here](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification/discussion/466718#2629094).
+
+**resnet-gru.ipynb**:
+This is the ResNet-GRU with GeM pooling training notebook from Kaggle. The code won't all work locally, but it's here for viewing.
+
+**csv data/train.csv**:
+This csv file gives ids, eeg ids, patient ids, eeg offset for labelling, the label votes, as well as spectrogram information. From this, we have the information to find and slice the EEG for any particular observation.
 
 ## References
 
