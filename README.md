@@ -39,7 +39,9 @@ Because the data coming from the ResNet block is the residual stream of the inpu
 
 The GeM Pooling method comes from the $L_p$ norm in real analysis, defined for a vector $v = (v_1,\ldots,v_n)$ as 
 
-$$||v||_p = \left(\sum_{i=1}^n |v_i|^p\right)^{1/p}.$$
+
+$$||v||_p = \left( \sum_{i=1}^n |v_i|^p \right)^{1/p}$$
+
 
 As $p \to \infty$, $||v||_p \to \max \{|v_1|,\ldots,|v_n|\},$
 and for $p = 1$, $||v||_1$ is just the sum, which is proportional to the average. By making $p$ learnable and initializing it with a value of, say, 2, we allow each channel to pool in a flexible, learnable way, while only adding 1 new parameter per channel.
