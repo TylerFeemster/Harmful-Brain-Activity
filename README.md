@@ -41,7 +41,7 @@ The GeM Pooling method comes from the $L_p$ norm in real analysis, defined as
 
 $$||v||_p = \left( \sum_{i=1}^n |v_i|^p \right)^{1/p}$$
 
-for a vector $v = (v_1, \ldots, v_n)$. As $p \to \infty$, $||v||_p \to \max \{|v_1|,\ldots,|v_n|\},$
+for a vector $v = (v_1, \ldots, v_n)$. As $p \to \infty$, $||v||_p \to \max_i \{|v_i|\},$
 and for $p = 1$, $||v||_1$ is just the sum, which is proportional to the average. By making $p$ learnable and initializing it with a value of, say, 2, we allow each channel to pool in a flexible, learnable way, while only adding 1 new parameter per channel.
 
 This performed better than the ResNet GRU with average pooling. On the private leaderboard, it single-handedly allowed me to break a KL-Divergence score of 0.38.
