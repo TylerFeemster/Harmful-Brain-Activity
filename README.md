@@ -38,6 +38,7 @@ In the ResNet GRU mentioned above, output of the ResNet portion is downsampled b
 Because the data coming from the ResNet block is the residual stream of the input data, my hypothesis was that the channels would each represent certain features whose intensity would vary along the signal. For rare or sparse features, a max pool may work better because "is present" is more useful than "average presence". Likewise, features that are dense or common may benefit more from an average pool. With this intuition, I added a Generalized Mean Pooling layer.
 
 The GeM Pooling method comes from the $L_p$ norm in real analysis, defined for a vector $v = (v_1,\ldots,v_n)$ as 
+
 $$||v||_p = \left(\sum_{i=1}^n |v_i|^p\right)^{1/p}.$$
 
 As $p \to \infty$, $||v||_p \to \max \{|v_1|,\ldots,|v_n|\},$
