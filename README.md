@@ -1,8 +1,10 @@
 ## HMS - Harmful Brain Activity Classification
 
-[This](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification/overview) Kaggle Competition asks the competitors to classify EEG and Spectrogram segments across six categories of harmful brain activity. Thank you to Kaggle, Harvard Medical School, Sunstella Foundation, Jazz Pharmaceuticals, and the Clinal Data Animation Center (CDAC) for sponsoring the competition. 
+[This](https://www.kaggle.com/competitions/hms-harmful-brain-activity-classification/overview) Kaggle Competition asked the competitors to classify EEG and Spectrogram segments across six categories of harmful brain activity. Thank you to Kaggle, Harvard Medical School, Sunstella Foundation, Jazz Pharmaceuticals, and the Clinal Data Animation Center (CDAC) for sponsoring the competition.
 
 My goal from the beginning was to focus on only the raw EEG data. This way, I could learn the state-of-the-art of signal processing, including preprocessing techniques (Wavelet transforms, Butterworth filtering, etc.) and 1D deep learning models (e.g., ResNet, WaveNet, GRU, etc.). My final EEG model architecture was a ResNet model, followed by a GeM Pooling layer, a GRU, and a fully-connected classification head. After ensembling with some publicly-available spectrogram models, I was able to finish 387/2767, within the top 14%.
+
+This repository excludes the EEGs and spectrograms themselves and other preprocessed data. On my local machine, the full folder is 35GB.
 
 ## Preprocessing and Training
 
@@ -10,7 +12,7 @@ See [DEFINITIONS.md](./DEFINITIONS.md) for information on the labels. Our goal w
 
 The labels given are integers corresponding to the number of experts who believed the data showed the type of harmful activity represented by that label. The problem, however, was that the number of experts voting, in total, ranged from 3-20. Note that a mixed response example across 20 votes is less likely to be mixed when any 3 votes are taken. Likewise, we can be much more confident with 20 votes all pointing to one label, whereas 3 votes all pointing to one label is less convincing. To address this, I used 2-stage training: for the first stage, the labels were averaged with constant probabilities of 1/6 to make the labels less confident; in the second stage, I used the true labels.
 
-For preprocessing, I used Butterworth low-pass and high-pass filters with the scipy signals module. The frequency ranges that remained were comfortably within the diagnostic frequencies of the harmful brain activity I aimed to classify. I also tested Morlet Wavelets, but this did not perform better. I used the "double banana" EEG montage along the four principal chains as input to my model, and I downsampled by a factor of 5, i.e. 10,000 observations (50 seconds at 200 Hz) became 2,000 observations (50 seconds at 40 Hz). Note that I performed Butterworth filtering prior to downsampling to allow for better capture of the essential frequencies.
+For preprocessing, I used Butterworth low-pass and high-pass filters with the scipy signals module. The frequency ranges that remained were comfortably within the diagnostic frequencies of the harmful brain activity I aimed to classify. I also tested Morlet Wavelets, but this did not perform better. I used the "double banana" EEG montage along the four principal chains as input to my model, and I downsampled by a factor of 5, i.e. 10,000 observations (50 seconds at 200 Hz) became 2,000 observations (50 seconds at 40 Hz). I performed Butterworth filtering prior to downsampling to allow for better capture of the essential frequencies.
 
 ## Model Notes
 
